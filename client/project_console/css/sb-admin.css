@@ -229,3 +229,22 @@ ul.alert-dropdown {
 .alert-seperator {
 	margin: 0px;
 }
+
+.member {
+	width: 300px;
+}
+
+.tags {
+	margin: 2px;
+}
+
+/*.content {
+	height: 100%;
+}*/
+
+#console-panel {}
+
+#console {
+	height: 300px;
+	overflow-y: scroll;
+}
