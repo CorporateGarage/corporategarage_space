@@ -39,7 +39,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="container">
-            <a class="navbar-brand" href="#">Corporate Garage</a>
+            <a class="navbar-brand" href="#"><img style="width: 50%;" src="./img/logo.JPG" alt="Corporate Garage"/></a>
             <div class="collapse navbar-collapse" id="navbarExample">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
@@ -154,6 +154,8 @@
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/tether/tether.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://rawgit.com/wg4568/cg-frontend-api/master/api.js"></script>
+
     <script>
     var curr_page = 1;
     var size = 0;
@@ -209,7 +211,6 @@
     {
        prevBtn.classList.remove("dissapear");
     }
-    //$("page-item")[0].removeClass("dissapear");
     console.log("nextPage flag: " + flag);
 
   }
