@@ -86,29 +86,37 @@
 				<div class="container">
 				    <section>
 
-						<div ng-show="tab.isSet(0)">
-				             <h1>Overview</h1>
-							 <hr>
+						<div class="content" ng-show="tab.isSet(0)">
+							<h1>Overview</h1><hr>
+							<h4><strong id="description"></strong></h4>
+							<img id="thumbnail" src="#" width="400px" hidden></img>
 				        </div>
 
-				        <div ng-show="tab.isSet(1)">
-				             <h1>People</h1>
-							 <hr>
+				        <div class="content" ng-show="tab.isSet(1)">
+							<h1>People</h1><hr>
+
+							<div id="members"></div>
 				        </div>
 
-				        <div ng-show="tab.isSet(2)">
-				             <h1>Resources</h1>
-							 <hr>
+				        <div class="content" ng-show="tab.isSet(2)">
+							<h1>Resources</h1><hr>
 				        </div>
 
-						<div ng-show="tab.isSet(3)">
-				             <h1>Chat</h1>
-							 <hr>
+						<div class="content" ng-show="tab.isSet(3)">
+							<h1>Chat</h1><hr>
+
+							<div id="console-panel" class="panel panel-default">
+								<div class="panel-heading">Connected to chat</div>
+								<div id="console" class="panel-body"></div>
+							</div>
+							<div>
+								<input style="float: left; width: 300px; margin-right: 10px" id="chat-input" class="form-control" placeholder="Message..."></input>
+								<button style="float: left" id="send-input" class="btn btn-default btn">Send</button>
+							</div>
 				        </div>
 
-						<div ng-show="tab.isSet(4)">
-				             <h1>Timeline</h1>
-							 <hr>
+						<div class="content" ng-show="tab.isSet(4)">
+				             <h1>Timeline</h1><hr>
 				        </div>
 
 				    </section>
@@ -136,6 +144,7 @@
 	<!-- Manager -->
 	<script src="https://rawgit.com/wg4568/cg-frontend-api/master/api.js"></script>
 	<script src="js/console.js"></script>
+	<script src="js/sockets.js"></script>
 
 </body>
 
