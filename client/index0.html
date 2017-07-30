@@ -180,8 +180,10 @@
             for(var i = 0; i < tmp.length; ++i)
             {
               document.getElementsByClassName("card")[i].classList.add("show");
+              var element_img = document.getElementsByClassName("card-img-top")[i%6];
               var element_title = document.getElementsByClassName("card-title")[i%6];
               var element_description = document.getElementsByClassName("card-text")[i%6];
+              element_img.src = tmp[i]["imgsrc"];
               element_title.innerText = tmp[i]["name"];
               element_description.innerText = tmp[i]["description"];
             }
