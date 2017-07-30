@@ -21,3 +21,20 @@ body {
 .pagination {
     margin-bottom: 30px;
 }
+.card
+{
+  display: none;
+}
+.dissapear
+{
+  display: none;
+}
+.show
+{
+  display: block;
+}
+.card-img-top
+{
+  width: 700px;
+  height: 400px;
+}
