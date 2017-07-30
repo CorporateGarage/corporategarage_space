@@ -125,17 +125,17 @@
 
         <!-- Pagination -->
         <ul class="pagination justify-content-center">
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
+            <li class="page-item dissapear">
+                <button class="page-link" href="#" aria-label="Previous" onclick="prevPage()">
                     <span aria-hidden="true">&laquo;</span>
                     <span class="sr-only">Previous</span>
-                </a>
+                </button>
             </li>
             <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
+                <button class="page-link" aria-label="Next" onclick="nextPage()">
                     <span aria-hidden="true">&raquo;</span>
                     <span class="sr-only">Next</span>
-                </a>
+                </button>
             </li>
         </ul>
 
@@ -155,22 +155,84 @@
     <script src="vendor/tether/tether.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
     <script>
-    $.ajax({url: "http://localhost/corporategarage/api0.php?action=get_app_list&page_id=1",
+    var curr_page = 1;
+    var size = 0;
+    $.ajax({url: "http://localhost/corporategarage/api0.php?action=get_size",
        success: function(result)
        {
-         console.log(result);
-         var tmp = JSON.parse(result);
-         console.log(tmp);
-         for(var i = 0; i < tmp.length; ++i)
+         size = 1 * result;
+         if(size <= 6)
          {
-           var element_title = document.getElementsByClassName("card-title")[i%6];
-           var element_description = document.getElementsByClassName("card-text")[i%6];
-           element_title.innerText = tmp[i]["name"];
-           element_description.innerText = tmp[i]["description"];
+           console.log("Size is " + size);
+           document.getElementsByClassName("page-item")[1].classList.add("dissapear");
          }
        }
     })
-    </script>
+    function getProjects(page_id)
+    {
+       var more_projects = true;
+       $.ajax({url: "http://localhost/corporategarage/api0.php?action=get_app_list&page_id=" + page_id,
+          success: function(result)
+          {
+            console.log(result);
+            var tmp = JSON.parse(result);
+            console.log(tmp);
+            for(var i = 0; i < tmp.length; ++i)
+            {
+              document.getElementsByClassName("card")[i].classList.add("show");
+              var element_title = document.getElementsByClassName("card-title")[i%6];
+              var element_description = document.getElementsByClassName("card-text")[i%6];
+              element_title.innerText = tmp[i]["name"];
+              element_description.innerText = tmp[i]["description"];
+            }
+            if(tmp.length < 6)
+            {
+              var nextBtn = document.getElementsByClassName("page-item")[1];
+              nextBtn.classList.add("dissapear");
+            }
+          }
+       })
+       return more_projects;
+  }
+  getProjects(curr_page);
+
+  function nextPage()
+  {
+    ++curr_page;
+    $(".card").removeClass("show");
+    console.log("Using page: " + curr_page);
+    var flag = getProjects(curr_page);
+    var prevBtn = document.getElementsByClassName("page-item")[0];
+    if(prevBtn.classList.contains("dissapear"))
+    {
+       prevBtn.classList.remove("dissapear");
+    }
+    //$("page-item")[0].removeClass("dissapear");
+    console.log("nextPage flag: " + flag);
+
+  }
+
+  function prevPage()
+  {
+    --curr_page;
+    if(curr_page <= 0)
+    {
+      curr_page = 1;
+    }
+    $(".card").removeClass("show");
+    getProjects(curr_page);
+    if(curr_page == 1)
+    {
+      var prevBtn = document.getElementsByClassName("page-item")[0];
+      prevBtn.classList.add("dissapear");
+    }
+    var nextBtn = document.getElementsByClassName("page-item")[1];
+    if(nextBtn.classList.contains("dissapear"))
+    {
+       nextBtn.classList.remove("dissapear");
+    }
+  }
+  </script>
 </body>
 
 </html>
