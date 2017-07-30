@@ -1,0 +1,12 @@
+{
+  "mysqldb": {
+    "host": "sl-us-south-1-portal.2.dblayer.com",
+    "port": 19045,
+    "url": "",
+    "database": "main",
+    "password": "ZCVZDVMLUGSSUJWD",
+    "name": "mysqldb",
+    "user": "admin",
+    "connector": "mysql"
+  }
+}
