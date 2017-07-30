@@ -1,7 +1,12 @@
+function get(name){
+	if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
+	return decodeURIComponent(name[1]);
+}
+
 var ICON_REF = {user: "fa-user"}
 
-var USER_ID = 1;
-var PROJECT_ID = 15;
+var USER_ID = get("uuid");
+var PROJECT_ID = get("project");
 var ALERTS = []
 
 var USER;
