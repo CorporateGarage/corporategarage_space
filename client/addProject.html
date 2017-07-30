@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+  <html>
+    <body>
+      <form>
+        <label for="name">Name</label> <input type="text" id="name" name="name">
+        <label for="description">Description</label><input type="text" id="description" name="description">
+        <label for="url">Image Url</label><input type="text" id="img_url" name="url">
+        <input type="button" value="Submit" onclick="sendData()">
+      </form>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://rawgit.com/wg4568/cg-frontend-api/master/api.js">
+      </script>
+      <script>
+         function sendData()
+         {
+           console.log("In sendData");
+           var my_name = document.getElementById("name").value;
+           var my_description = document.getElementById("description").value;
+           var image_url = document.getElementById("img_url").value;
+           if(image_url === "")
+              image_url = "NULL";
+           var my_members = [1];
+           var my_homepage = "NULL";
+           var my_thumbnail = image_url;
+           var my_seeking =["Developer"];
+           var my_has = ["Artist"];
+
+           var myjson = {
+             name: my_name,
+             description: my_description,
+             members: my_members,
+             homepage: my_homepage,
+             thumbnail: my_thumbnail,
+             seeking: my_seeking,
+             has: my_has,
+           }
+
+           console.log(myjson);
+           json = JSON.stringify(myjson);
+           console.log(myjson);
+
+           API.Projects.create(myjson, null);
+         }
+      </script>
+    </body>
+  </html>

@@ -39,7 +39,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="container">
-            <a class="navbar-brand" href="#"><img style="width: 50%;" src="./img/logo.JPG" alt="Corporate Garage"/></a>
+            <a class="navbar-brand" href="#">Corporate Garage</a>
             <div class="collapse navbar-collapse" id="navbarExample">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
@@ -68,7 +68,7 @@
         <div class="row">
             <div class="col-lg-4 col-sm-6 portfolio-item">
                 <div class="card h-100">
-                    <a href="#"><img class="card-img-top img-fluid" src="http://placehold.it/700x400" alt=""></a>
+                    <a class="project_url" href="#"><img class="card-img-top img-fluid" src="http://placehold.it/700x400" alt=""></a>
                     <div class="card-block">
                         <h4 class="card-title"><a href="#">Project One</a></h4>
                         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
@@ -77,7 +77,7 @@
             </div>
             <div class="col-lg-4 col-sm-6 portfolio-item">
                 <div class="card h-100">
-                    <a href="#"><img class="card-img-top img-fluid" src="http://placehold.it/700x400" alt=""></a>
+                    <a class="project_url"><img class="card-img-top img-fluid" src="http://placehold.it/700x400" alt=""></a>
                     <div class="card-block">
                         <h4 class="card-title"><a href="#">Project Two</a></h4>
                         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
@@ -86,7 +86,7 @@
             </div>
             <div class="col-lg-4 col-sm-6 portfolio-item">
                 <div class="card h-100">
-                    <a href="#"><img class="card-img-top img-fluid" src="http://placehold.it/700x400" alt=""></a>
+                    <a class="project_url"><img class="card-img-top img-fluid" src="http://placehold.it/700x400" alt=""></a>
                     <div class="card-block">
                         <h4 class="card-title"><a href="#">Project Three</a></h4>
                         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</p>
@@ -95,7 +95,7 @@
             </div>
             <div class="col-lg-4 col-sm-6 portfolio-item">
                 <div class="card h-100">
-                    <a href="#"><img class="card-img-top img-fluid" src="http://placehold.it/700x400" alt=""></a>
+                    <a class="project_url"><img class="card-img-top img-fluid" src="http://placehold.it/700x400" alt=""></a>
                     <div class="card-block">
                         <h4 class="card-title"><a href="#">Project Four</a></h4>
                         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
@@ -104,7 +104,7 @@
             </div>
             <div class="col-lg-4 col-sm-6 portfolio-item">
                 <div class="card h-100">
-                    <a href="#"><img class="card-img-top img-fluid" src="http://placehold.it/700x400" alt=""></a>
+                    <a class="project_url"><img class="card-img-top img-fluid" src="http://placehold.it/700x400" alt=""></a>
                     <div class="card-block">
                         <h4 class="card-title"><a href="#">Project Five</a></h4>
                         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
@@ -113,7 +113,7 @@
             </div>
             <div class="col-lg-4 col-sm-6 portfolio-item">
                 <div class="card h-100">
-                    <a href="#"><img class="card-img-top img-fluid" src="http://placehold.it/700x400" alt=""></a>
+                    <a class="project_url"><img class="card-img-top img-fluid" src="http://placehold.it/700x400" alt=""></a>
                     <div class="card-block">
                         <h4 class="card-title"><a href="#">Project Six</a></h4>
                         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque earum nostrum suscipit ducimus nihil provident, perferendis rem illo, voluptate atque, sit eius in voluptates, nemo repellat fugiat excepturi! Nemo, esse.</p>
@@ -159,25 +159,31 @@
     <script>
     var curr_page = 1;
     var size = 0;
-    $.ajax({url: "http://localhost/corporategarage/api0.php?action=get_size",
-       success: function(result)
-       {
-         size = 1 * result;
+    API.Projects.getAll(function(result)
+    {
+         size = result.length;
          if(size <= 6)
          {
            console.log("Size is " + size);
            document.getElementsByClassName("page-item")[1].classList.add("dissapear");
          }
-       }
-    })
+
+    });
+
+
+
     function getProjects(page_id)
     {
        var more_projects = true;
-       $.ajax({url: "http://localhost/corporategarage/api0.php?action=get_app_list&page_id=" + page_id,
-          success: function(result)
+       API.Projects.getAll(function(result)
+      {
+          var starting_index = 6 * (page_id - 1);
+          var finish_index   = 6 * (page_id);
+          var tmp = [];
+          for(var i = starting_index; (i < finish_index && i < size); ++i)
           {
-            console.log(result);
-            var tmp = JSON.parse(result);
+              tmp.push(result[i]);
+          }
             console.log(tmp);
             for(var i = 0; i < tmp.length; ++i)
             {
@@ -185,17 +191,18 @@
               var element_img = document.getElementsByClassName("card-img-top")[i%6];
               var element_title = document.getElementsByClassName("card-title")[i%6];
               var element_description = document.getElementsByClassName("card-text")[i%6];
-              element_img.src = tmp[i]["imgsrc"];
+              var element_url = document.getElementsByClassName("project_url")[i%6];
+              element_img.src = tmp[i]["thumbnail"];
               element_title.innerText = tmp[i]["name"];
               element_description.innerText = tmp[i]["description"];
+              element_url.href = tmp[i]["website"];
             }
             if(tmp.length < 6 || size <= 6 * page_id)
             {
               var nextBtn = document.getElementsByClassName("page-item")[1];
               nextBtn.classList.add("dissapear");
             }
-          }
-       })
+          });
        return more_projects;
   }
   getProjects(curr_page);
