@@ -2,11 +2,13 @@
 
 var loopback = require('loopback');
 var boot = require('loopback-boot');
-var cors = require('cors');
 
 var app = module.exports = loopback();
 
-app.use(cors());
+app.use(function(req, res, next) {
+	res.setHeader('Access-Control-Allow-Origin', '*');
+	next();
+});
 
 app.start = function() {
   // start the web server
