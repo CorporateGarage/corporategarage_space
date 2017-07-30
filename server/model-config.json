@@ -16,5 +16,9 @@
   "users": {
     "dataSource": "mysqldb",
     "public": true
+  },
+  "projects": {
+    "dataSource": "mysqldb",
+    "public": true
   }
 }
