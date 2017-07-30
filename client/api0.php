@@ -47,7 +47,11 @@ array("description" => "This is an app that detects fake news depending on the v
 array("description" => "The most uncharted areas in the world are the oceans. This is a flashlight app that can shine deep down in the sea where nobody has ever ventured.", "name" => "Deep Down Light"),
 array("description" => "A website that finds the books you need, along with how much is left, at any library and any bookstore near you. ", "name" => "EZ Catalog"),
 array("description" => "An automatic wheelchair that uses the features of Google Maps and takes you wherever you need to while you don’t have to struggle driving it.", "name" => "AutoChair"),
-array("description" => "An app that composes music on a score while you are bowing, blowing, or singing. This makes being creative a lot easier by saving you the trouble of writing down the notes for you.", "name" => "AI Composer")
+array("description" => "An app that composes music on a score while you are bowing, blowing, or singing. This makes being creative a lot easier by saving you the trouble of writing down the notes for you.", "name" => "AI Composer"),
+array("description" => "This Virtual Reality game promotes physical activity while still having the fun of virtual gaming.", "name" => "Virtual Fitness"),
+array("description" => "A problem-solving mobile application that does your math homework for you. Simply take a picture of a math problem you are stuck on, and it will give you what you need.", "name" => "Math Gallery"),
+array("description" => "Using Raspberry PI to automate the AC/Heater in a house.", "name" => "Thermoberry"),
+array("description" => "A digital watch app specifically made for time trial athletes such as runners and swimmers. The app is completely voice-automated, which means the athlete can measure his or her time accurately.", "name" => "SP33D")
 
      );
 
@@ -78,7 +82,11 @@ array("description" => "This is an app that detects fake news depending on the v
 array("description" => "The most uncharted areas in the world are the oceans. This is a flashlight app that can shine deep down in the sea where nobody has ever ventured.", "name" => "Deep Down Light"),
 array("description" => "A website that finds the books you need, along with how much is left, at any library and any bookstore near you. ", "name" => "EZ Catalog"),
 array("description" => "An automatic wheelchair that uses the features of Google Maps and takes you wherever you need to while you don’t have to struggle driving it.", "name" => "AutoChair"),
-array("description" => "An app that composes music on a score while you are bowing, blowing, or singing. This makes being creative a lot easier by saving you the trouble of writing down the notes for you.", "name" => "AI Composer")
+array("description" => "An app that composes music on a score while you are bowing, blowing, or singing. This makes being creative a lot easier by saving you the trouble of writing down the notes for you.", "name" => "AI Composer"),
+array("description" => "This Virtual Reality game promotes physical activity while still having the fun of virtual gaming.", "name" => "Virtual Fitness"),
+array("description" => "A problem-solving mobile application that does your math homework for you. Simply take a picture of a math problem you are stuck on, and it will give you what you need.", "name" => "Math Gallery"),
+array("description" => "Using Raspberry PI to automate the AC/Heater in a house.", "name" => "Thermoberry"),
+array("description" => "A digital watch app specifically made for time trial athletes such as runners and swimmers. The app is completely voice-automated, which means the athlete can measure his or her time accurately.", "name" => "SP33D")
 
      );
 

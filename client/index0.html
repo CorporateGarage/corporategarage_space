@@ -185,7 +185,7 @@
               element_title.innerText = tmp[i]["name"];
               element_description.innerText = tmp[i]["description"];
             }
-            if(tmp.length < 6)
+            if(tmp.length < 6 || size <= 6 * page_id)
             {
               var nextBtn = document.getElementsByClassName("page-item")[1];
               nextBtn.classList.add("dissapear");
